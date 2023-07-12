@@ -19,13 +19,13 @@ Make sure you have Go installed on your system. You can download and install it 
 Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/blogging-api.git
+git clone https://github.com/BaseMax/GoAPIBlog.git
 ```
 
 Change to the project directory:
 
 ```bash
-cd blogging-api
+cd GoAPIBlog
 ```
 
 Install the project dependencies:
@@ -36,9 +36,9 @@ go mod download
 
 Set up the environment variables:
 
-- Create a .env file in the root directory of the project.
+- Create a `.env` file in the root directory of the project.
 
-- Define the following environment variables in the .env file:
+- Define the following environment variables in the `.env` file:
 
 ```plaintext
 PORT=3000
