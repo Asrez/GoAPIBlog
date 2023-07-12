@@ -1,0 +1,36 @@
+server:
+  internalPort: 8000
+  externalPort: 8000
+  runMode: debug
+
+logger:
+  filePath: ../logs/
+  encoding: json
+  level: debug
+  logger: zap
+
+postgres :
+  host : localhost
+  port : 5432
+  user : postgres
+  password : sH1382@@
+  dbName : weather
+  sslMode : disable
+  maxIdleConns: 15
+  maxOpenConns: 100
+  connMaxLifetime: 5
+
+
+password:
+  includeChars: true
+  includeDigits: true
+  minLength: 6
+  maxLength: 64
+  includeUppercase: true
+  includeLowercase: true
+
+jwt:
+  secret: "mySecretKey"
+  refreshSecret: "mySecretKey"
+  accessTokenExpireDuration: 1440
+  refreshTokenExpireDuration: 60
