@@ -3,6 +3,7 @@ package migration
 import (
 	"github.com/Asrez/GoAPIBlog/config"
 	"github.com/Asrez/GoAPIBlog/data/db"
+	"github.com/Asrez/GoAPIBlog/data/models"
 	"github.com/Asrez/GoAPIBlog/pkg/logging"
 	"gorm.io/gorm"
 )
@@ -28,9 +29,9 @@ func addNewTable(database *gorm.DB, model interface{}, tables []interface{}) []i
 
 func createTables(database *gorm.DB){
 	tables := []interface{}{}
-
-	// tables = addNewTable(database , models.Categories{} , tables)
-
+	
+	tables = addNewTable(database, models.User{} , tables)
+	tables = addNewTable(database , models.Post{},tables)
 
 	err := database.Migrator().CreateTable(tables...)
 	if err != nil {
