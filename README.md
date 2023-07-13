@@ -118,9 +118,10 @@ Contributions to this project are welcome. Feel free to open issues and submit p
 
 This project is licensed under the GPL-3.0 License.
 
+# Postman collection
+
+[postman](https://documenter.getpostman.com/view/20769678/2s946e9Ynx)
+
 Copyright 2023, Max Base
 
 Copyright 2023, Asrez group
-
-# Postman collection
-[postman](https://documenter.getpostman.com/view/20769678/2s946e9Ynx)
