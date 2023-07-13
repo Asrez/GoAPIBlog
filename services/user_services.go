@@ -54,10 +54,10 @@ func (s *UserService) LoginByUsername(req *dto.LoginByUsernameRequest) (*dto.Tok
 
 }
 
-// Register
 
+// Register
 func (s *UserService) RegisterByUsername(req *dto.RegisterUserByUsernameRequest) error {
-	u := models.User{Username: req.Username,Email: req.Email}
+	u := models.User{Username: req.Username, Email: req.Email}
 
 	exists, err := s.existsByEmail(req.Email)
 	if err != nil {
@@ -81,7 +81,7 @@ func (s *UserService) RegisterByUsername(req *dto.RegisterUserByUsernameRequest)
 		return err
 	}
 	u.Password = string(hp)
-	
+
 	tx := s.database.Begin()
 	err = tx.Create(&u).Error
 	if err != nil {
@@ -89,11 +89,14 @@ func (s *UserService) RegisterByUsername(req *dto.RegisterUserByUsernameRequest)
 		s.logger.Error(logging.Postgres, logging.Rollback, err.Error(), nil)
 		return err
 	}
+	if err != nil {
+		tx.Rollback()
+		s.logger.Error(logging.Postgres, logging.Rollback, err.Error(), nil)
+		return err
+	}
 	tx.Commit()
 	return nil
-
 }
-
 
 func (s *UserService) existsByEmail(email string) (bool, error) {
 	var exists bool
