@@ -29,6 +29,7 @@ const (
 
 	// Internal
 	Api                 SubCategory = "Api"
+	HashPassword        SubCategory = "HashPassword"
 )
 
 const (
