@@ -122,3 +122,5 @@ Copyright 2023, Max Base
 
 Copyright 2023, Asrez group
 
+# Postman collection
+[postman](https://documenter.getpostman.com/view/20769678/2s946e9Ynx)
