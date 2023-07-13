@@ -21,6 +21,9 @@ func InitServer(){
 	{
 		auth := v1.Group("auth")
 		routers.Auth(auth , config)
+
+		posts := v1.Group("posts")
+		routers.Posts(posts,config)
 	}
 
 	r.Run(fmt.Sprintf(":%s", config.Server.InternalPort))
