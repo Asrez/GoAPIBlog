@@ -8,8 +8,6 @@ type TokenDetail struct {
 }
 
 type RegisterUserByUsernameRequest struct {
-	FirstName string `json:"firstName" binding:"required,min=3"`
-	LastName  string `json:"lastName" binding:"required,min=6"`
 	Username  string `json:"username" binding:"required,min=5"`
 	Email     string `json:"email" binding:"min=6,email"`
 	Password  string `json:"password" binding:"required,password,min=6"`
