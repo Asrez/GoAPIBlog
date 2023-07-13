@@ -2,9 +2,11 @@ package migration
 
 import (
 	"github.com/Asrez/GoAPIBlog/config"
+	"github.com/Asrez/GoAPIBlog/constants"
 	"github.com/Asrez/GoAPIBlog/data/db"
 	"github.com/Asrez/GoAPIBlog/data/models"
 	"github.com/Asrez/GoAPIBlog/pkg/logging"
+	"golang.org/x/crypto/bcrypt"
 	"gorm.io/gorm"
 )
 
@@ -15,6 +17,7 @@ var logger = logging.NewLogger(config.GetConfig())
 func Up(){
 	database := db.GetDb()
 	createTables(database)
+	createDefaultUserInformation(database)
 	logger.Info(logging.Postgres, logging.Migration, "UP", nil)
 
 }
@@ -39,4 +42,26 @@ func createTables(database *gorm.DB){
 	}
 	logger.Info(logging.Postgres, logging.Migration, "tables created", nil)
 
+}
+
+
+func createDefaultUserInformation(database *gorm.DB) {
+	u := models.User{Username: constants.DefaultUserName, Email: constants.DefaultEmail}
+	pass := constants.DefaultPassword
+	hashedPassword, _ := bcrypt.GenerateFromPassword([]byte(pass), bcrypt.DefaultCost)
+	u.Password = string(hashedPassword)
+	createAdminUserIfNotExists(database, &u)
+}
+
+
+func createAdminUserIfNotExists(database *gorm.DB, u *models.User) {
+	exists := 0
+	database.
+		Model(&models.User{}).
+		Select("1").
+		Where("username = ?", u.Username).
+		First(&exists)
+	if exists == 0 {
+		database.Create(u)
+	}
 }
