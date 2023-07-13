@@ -14,7 +14,7 @@ postgres :
   port : 5432
   user : postgres
   password : sH1382@@
-  dbName : weather
+  dbName : blog
   sslMode : disable
   maxIdleConns: 15
   maxOpenConns: 100
