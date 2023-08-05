@@ -19,7 +19,7 @@ Make sure you have Go installed on your system. You can download and install it 
 Clone the repository:
 
 ```bash
-git clone https://github.com/BaseMax/GoAPIBlog.git
+git clone https://github.com/Asrez/GoAPIBlog.git
 ```
 
 Change to the project directory:
